@@ -10,45 +10,91 @@
   --white: #ffffff;
 }
 
+.button {
+  transition: transform 0.2s ease;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
 body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu,
-    Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial,
-    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+  Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue, Arial,
+  Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
   font-size: 1rem;
   background-color: var(--grey-darker);
   color: var(--white);
   display: flex;
   justify-content: center;
+  background: linear-gradient(120deg, #1e1e2f, #2a2a3e, #3b2f4a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+  color: white;
+  font-family: sans-serif;
+  justify-content: center; /* centra orizzontalmente */
+  align-items: center;     /* centra verticalmente */
+  height: 100vh;           /* altezza viewport */
 }
 
 .container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(150, 150, 255, 0.1));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  padding: 20px;
   max-width: 800px;
   padding-top: 1rem;
+  padding-bottom: 2rem;
   width: 100%;
 }
 
 #title-div {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
+width: 100%;
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+margin-bottom: 1rem;
 }
 
 #title {
-  font-size: 30pt;
+font-size: 30pt;
 }
 
 .shadow-md {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .shadow-lg {
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.button:hover {
+  transition: border-color 0.01s;
+  min-width: 6rem;
+  padding: 0.8rem 1rem 0.8rem 1rem;
+  border-radius: 30px;
+  margin: 0.2rem;
+  outline: none;
+  color: white;
+  background-color: #747bff;
+  border: none;
+  cursor: pointer;
 }
 
 .button {
@@ -58,7 +104,7 @@ body {
   margin: 0.2rem;
   outline: none;
   color: white;
-  background-color: hsla(174, 59%, 56%, 1);
+  background-color: #747bff;
   border: none;
   cursor: pointer;
 }
@@ -70,16 +116,19 @@ body {
 }
 
 .button:hover:enabled {
-  background-color: hsla(174, 59%, 56%, 0.92);
+  background-color: #747bff;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  filter: drop-shadow(0 0 2em #747bff);
+  animation: pulse 0.4s ease;
+  transform: scale(1.1);
 }
 
 #tag-content {
-  width: 100%;
-  display: flex;
-  flex: auto;
-  flex-direction: row;
+width: 100%;
+display: flex;
+flex: auto;
+flex-direction: row;
 }
 
 .dump-textarea {
@@ -89,8 +138,8 @@ body {
   color: var(--white);
   font-size: 0.75rem;
   padding: 0.4rem;
-  outline-color: var(--black);
-  border-bottom: solid 1px;
+  /*outline-color: var(--black);
+  border-bottom: 1px ;*/
   border-color: var(--grey-light);
   resize: none;
   vertical-align: top;
@@ -164,22 +213,58 @@ body {
 }
 
 #uid {
-  padding: 0.8rem;
+padding: 0.8rem;
 }
 
 #name {
-  height: 36px;
-  background-color: var(--grey-dark);
-  border: 0px solid var(--grey-light);
-  outline: none;
-  border-radius: 0.2rem;
-  color: var(--white);
-  font-size: 1.05rem;
-  margin-right: 1rem;
-  min-width: 450px;
+height: 36px;
+background-color: var(--grey-dark);
+border: 0px solid var(--grey-light);
+outline: none;
+border-radius: 0.2rem;
+color: var(--white);
+font-size: 1.05rem;
+margin-right: 1rem;
+min-width: 450px;
 }
 
 #name:hover,
 #name:focus {
-  box-shadow: 0 2px 5px rgb(0, 0, 0);
+box-shadow: 0 2px 5px rgb(0, 0, 0);
+}
+
+
+input[type="file"] {
+  display: none;
+}
+
+.custom-file-upload {
+  min-width: 6rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color:  #747bff;
+  color: white;
+  border: none;
+  border-radius:30px;
+  margin-right: 10px;
+}
+
+.custom-file-upload:hover {
+  transition: border-color 0.01s;
+  min-width: 6rem;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color:  #747bff;
+  color: white;
+  border: none;
+  border-radius:30px;
+  margin-right: 10px;
+  animation: pulse 0.4s ease;
+  filter: drop-shadow(0 0 1em #747bff);
+}
+
+.file-name {
+  margin-left: 10rem;
+  color: var(--white);
+  font-size: 0.9rem;
 }
